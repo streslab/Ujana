@@ -1,8 +1,11 @@
 import bluepy
 
-nearby_devices = bluepy.btle.Scanner().scan()
+lightswitch = bluepy.btle.Peripheral("AA:BB:CC:DD:EE:FF", bluepy.btle.ADDR_TYPE_RANDOM,0)
+print("Connected..")
 
-#nearby_devices = bluetooth.discover_devices(device_id=0)
-
-for bdaddr in nearby_devices:
-    print(bdaddr.getScanData())
+while(1):
+    cmd = input("> ")
+    if(cmd == "on"):
+        lightswitch.writeCharacteristic(0x0030, b'\x01')
+    else:
+        lightswitch.writeCharacteristic(0x0030, b'\x00')
