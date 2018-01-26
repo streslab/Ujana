@@ -5,6 +5,6 @@ while(1):
     if(cmd == "on" or cmd == "off"):
         lightswitch.SetState(cmd)
     elif(cmd == "time"):
-        switchmate.Bright("0").SetMotion()
+        lightswitch.SetMotion()
     else:
         lightswitch = switchmate.Bright(cmd)
